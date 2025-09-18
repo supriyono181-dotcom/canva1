@@ -1,0 +1,506 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lembar Kerja IPA Kelas 7 - Klasifikasi Makhluk Hidup</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+        body { font-family: 'Inter', sans-serif; }
+        .worksheet-bg { background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%); }
+        .answer-box { 
+            border: 2px solid #e2e8f0; 
+            min-height: 60px; 
+            background: white;
+            transition: all 0.3s ease;
+        }
+        .answer-box:focus-within { 
+            border-color: #3b82f6; 
+            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+        }
+        .question-number {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+        @media print {
+            .no-print { display: none !important; }
+            body { background: white !important; }
+            .worksheet-bg { background: white !important; }
+        }
+    </style>
+</head>
+<body class="worksheet-bg min-h-screen py-8">
+    <div class="max-w-4xl mx-auto px-6">
+        <!-- Header -->
+        <div class="bg-white rounded-t-xl shadow-lg p-8 border-b-4 border-blue-500">
+            <div class="text-center mb-6">
+                <h1 class="text-3xl font-bold text-gray-800 mb-2">LEMBAR KERJA IPA</h1>
+                <h2 class="text-xl font-semibold text-blue-600 mb-4">Klasifikasi Makhluk Hidup</h2>
+                <div class="flex justify-center space-x-8 text-sm text-gray-600">
+                    <span><strong>Kelas:</strong> VII (Tujuh)</span>
+                    <span><strong>Semester:</strong> 1 (Ganjil)</span>
+                    <span><strong>Waktu:</strong> 90 Menit</span>
+                </div>
+            </div>
+            
+            <!-- Student Info -->
+            <div class="bg-gray-50 rounded-lg p-6">
+                <div class="grid md:grid-cols-2 gap-6">
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-2">Nama Lengkap:</label>
+                        <input type="text" class="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:border-blue-500 focus:outline-none" placeholder="Tulis nama lengkap Anda">
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-2">Kelas:</label>
+                        <select class="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:border-blue-500 focus:outline-none">
+                            <option value="">Pilih Kelas</option>
+                            <option value="7A">VII A</option>
+                            <option value="7B">VII B</option>
+                            <option value="7C">VII C</option>
+                            <option value="7D">VII D</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="mt-4">
+                    <label class="block text-sm font-medium text-gray-700 mb-2">Nomor Absen:</label>
+                    <input type="number" class="w-32 px-4 py-3 border-2 border-gray-300 rounded-lg focus:border-blue-500 focus:outline-none" placeholder="No">
+                </div>
+            </div>
+        </div>
+
+        <!-- Instructions -->
+        <div class="bg-yellow-50 border-l-4 border-yellow-400 p-6">
+            <h3 class="font-semibold text-yellow-800 mb-2">📋 PETUNJUK PENGERJAAN:</h3>
+            <ul class="text-sm text-yellow-700 space-y-1">
+                <li>• Bacalah setiap soal dengan teliti sebelum menjawab</li>
+                <li>• Untuk soal pilihan ganda, berilah tanda silang (X) pada jawaban yang benar</li>
+                <li>• Untuk soal essay, tulislah jawaban dengan jelas dan lengkap</li>
+                <li>• Periksa kembali jawaban Anda sebelum mengumpulkan</li>
+                <li>• Waktu pengerjaan: 90 menit</li>
+            </ul>
+        </div>
+
+        <!-- Section A: Multiple Choice -->
+        <div class="bg-white shadow-lg p-8 mt-6">
+            <div class="flex items-center mb-6">
+                <div class="question-number text-white px-4 py-2 rounded-lg font-bold mr-4">A</div>
+                <h3 class="text-xl font-bold text-gray-800">PILIHAN GANDA</h3>
+                <span class="ml-auto text-sm text-gray-600">Skor: 2 poin per soal</span>
+            </div>
+            <p class="text-gray-600 mb-6">Pilihlah jawaban yang paling tepat dengan memberi tanda silang (X) pada huruf a, b, c, atau d!</p>
+
+            <!-- Question 1 -->
+            <div class="mb-8 p-4 border-l-4 border-blue-200 bg-blue-50">
+                <div class="flex items-start">
+                    <span class="question-number text-white px-3 py-1 rounded-full text-sm font-bold mr-4">1</span>
+                    <div class="flex-1">
+                        <p class="font-medium text-gray-800 mb-4">Dasar klasifikasi makhluk hidup menurut sistem lima kingdom adalah...</p>
+                        <div class="space-y-3">
+                            <label class="flex items-center cursor-pointer hover:bg-white p-2 rounded">
+                                <input type="radio" name="q1" value="a" class="mr-3 text-blue-600">
+                                <span>a. Ukuran tubuh dan habitat</span>
+                            </label>
+                            <label class="flex items-center cursor-pointer hover:bg-white p-2 rounded">
+                                <input type="radio" name="q1" value="b" class="mr-3 text-blue-600">
+                                <span>b. Struktur sel, cara memperoleh makanan, dan kompleksitas organisasi tubuh</span>
+                            </label>
+                            <label class="flex items-center cursor-pointer hover:bg-white p-2 rounded">
+                                <input type="radio" name="q1" value="c" class="mr-3 text-blue-600">
+                                <span>c. Warna dan bentuk tubuh</span>
+                            </label>
+                            <label class="flex items-center cursor-pointer hover:bg-white p-2 rounded">
+                                <input type="radio" name="q1" value="d" class="mr-3 text-blue-600">
+                                <span>d. Tempat hidup dan cara bergerak</span>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Question 2 -->
+            <div class="mb-8 p-4 border-l-4 border-blue-200 bg-blue-50">
+                <div class="flex items-start">
+                    <span class="question-number text-white px-3 py-1 rounded-full text-sm font-bold mr-4">2</span>
+                    <div class="flex-1">
+                        <p class="font-medium text-gray-800 mb-4">Kingdom yang anggotanya memiliki ciri-ciri prokariotik dan uniseluler adalah...</p>
+                        <div class="space-y-3">
+                            <label class="flex items-center cursor-pointer hover:bg-white p-2 rounded">
+                                <input type="radio" name="q2" value="a" class="mr-3 text-blue-600">
+                                <span>a. Protista</span>
+                            </label>
+                            <label class="flex items-center cursor-pointer hover:bg-white p-2 rounded">
+                                <input type="radio" name="q2" value="b" class="mr-3 text-blue-600">
+                                <span>b. Monera</span>
+                            </label>
+                            <label class="flex items-center cursor-pointer hover:bg-white p-2 rounded">
+                                <input type="radio" name="q2" value="c" class="mr-3 text-blue-600">
+                                <span>c. Fungi</span>
+                            </label>
+                            <label class="flex items-center cursor-pointer hover:bg-white p-2 rounded">
+                                <input type="radio" name="q2" value="d" class="mr-3 text-blue-600">
+                                <span>d. Plantae</span>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Question 3 -->
+            <div class="mb-8 p-4 border-l-4 border-blue-200 bg-blue-50">
+                <div class="flex items-start">
+                    <span class="question-number text-white px-3 py-1 rounded-full text-sm font-bold mr-4">3</span>
+                    <div class="flex-1">
+                        <p class="font-medium text-gray-800 mb-4">Ciri-ciri kingdom Plantae adalah...</p>
+                        <div class="space-y-3">
+                            <label class="flex items-center cursor-pointer hover:bg-white p-2 rounded">
+                                <input type="radio" name="q3" value="a" class="mr-3 text-blue-600">
+                                <span>a. Heterotrof, eukariotik, multiseluler</span>
+                            </label>
+                            <label class="flex items-center cursor-pointer hover:bg-white p-2 rounded">
+                                <input type="radio" name="q3" value="b" class="mr-3 text-blue-600">
+                                <span>b. Autotrof, eukariotik, multiseluler</span>
+                            </label>
+                            <label class="flex items-center cursor-pointer hover:bg-white p-2 rounded">
+                                <input type="radio" name="q3" value="c" class="mr-3 text-blue-600">
+                                <span>c. Autotrof, prokariotik, uniseluler</span>
+                            </label>
+                            <label class="flex items-center cursor-pointer hover:bg-white p-2 rounded">
+                                <input type="radio" name="q3" value="d" class="mr-3 text-blue-600">
+                                <span>d. Heterotrof, prokariotik, multiseluler</span>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Question 4 -->
+            <div class="mb-8 p-4 border-l-4 border-blue-200 bg-blue-50">
+                <div class="flex items-start">
+                    <span class="question-number text-white px-3 py-1 rounded-full text-sm font-bold mr-4">4</span>
+                    <div class="flex-1">
+                        <p class="font-medium text-gray-800 mb-4">Jamur (fungi) memperoleh makanan dengan cara...</p>
+                        <div class="space-y-3">
+                            <label class="flex items-center cursor-pointer hover:bg-white p-2 rounded">
+                                <input type="radio" name="q4" value="a" class="mr-3 text-blue-600">
+                                <span>a. Fotosintesis</span>
+                            </label>
+                            <label class="flex items-center cursor-pointer hover:bg-white p-2 rounded">
+                                <input type="radio" name="q4" value="b" class="mr-3 text-blue-600">
+                                <span>b. Menyerap zat organik dari lingkungan</span>
+                            </label>
+                            <label class="flex items-center cursor-pointer hover:bg-white p-2 rounded">
+                                <input type="radio" name="q4" value="c" class="mr-3 text-blue-600">
+                                <span>c. Memangsa organisme lain</span>
+                            </label>
+                            <label class="flex items-center cursor-pointer hover:bg-white p-2 rounded">
+                                <input type="radio" name="q4" value="d" class="mr-3 text-blue-600">
+                                <span>d. Kemosintesis</span>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Question 5 -->
+            <div class="mb-8 p-4 border-l-4 border-blue-200 bg-blue-50">
+                <div class="flex items-start">
+                    <span class="question-number text-white px-3 py-1 rounded-full text-sm font-bold mr-4">5</span>
+                    <div class="flex-1">
+                        <p class="font-medium text-gray-800 mb-4">Contoh organisme yang termasuk kingdom Protista adalah...</p>
+                        <div class="space-y-3">
+                            <label class="flex items-center cursor-pointer hover:bg-white p-2 rounded">
+                                <input type="radio" name="q5" value="a" class="mr-3 text-blue-600">
+                                <span>a. Escherichia coli</span>
+                            </label>
+                            <label class="flex items-center cursor-pointer hover:bg-white p-2 rounded">
+                                <input type="radio" name="q5" value="b" class="mr-3 text-blue-600">
+                                <span>b. Amoeba</span>
+                            </label>
+                            <label class="flex items-center cursor-pointer hover:bg-white p-2 rounded">
+                                <input type="radio" name="q5" value="c" class="mr-3 text-blue-600">
+                                <span>c. Saccharomyces cerevisiae</span>
+                            </label>
+                            <label class="flex items-center cursor-pointer hover:bg-white p-2 rounded">
+                                <input type="radio" name="q5" value="d" class="mr-3 text-blue-600">
+                                <span>d. Pinus merkusii</span>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Section B: Essay -->
+        <div class="bg-white shadow-lg p-8 mt-6">
+            <div class="flex items-center mb-6">
+                <div class="question-number text-white px-4 py-2 rounded-lg font-bold mr-4">B</div>
+                <h3 class="text-xl font-bold text-gray-800">ESSAY</h3>
+                <span class="ml-auto text-sm text-gray-600">Skor: 10 poin per soal</span>
+            </div>
+            <p class="text-gray-600 mb-6">Jawablah pertanyaan berikut dengan jelas dan lengkap!</p>
+
+            <!-- Essay Question 1 -->
+            <div class="mb-8 p-4 border-l-4 border-green-200 bg-green-50">
+                <div class="flex items-start">
+                    <span class="question-number text-white px-3 py-1 rounded-full text-sm font-bold mr-4">1</span>
+                    <div class="flex-1">
+                        <p class="font-medium text-gray-800 mb-4">Sebutkan dan jelaskan 5 kingdom dalam sistem klasifikasi makhluk hidup beserta ciri-ciri utamanya!</p>
+                        <div class="answer-box rounded-lg p-4">
+                            <textarea class="w-full h-32 resize-none border-none outline-none" placeholder="Tuliskan jawaban Anda di sini..."></textarea>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Essay Question 2 -->
+            <div class="mb-8 p-4 border-l-4 border-green-200 bg-green-50">
+                <div class="flex items-start">
+                    <span class="question-number text-white px-3 py-1 rounded-full text-sm font-bold mr-4">2</span>
+                    <div class="flex-1">
+                        <p class="font-medium text-gray-800 mb-4">Mengapa klasifikasi makhluk hidup penting dalam ilmu biologi? Berikan minimal 3 alasan!</p>
+                        <div class="answer-box rounded-lg p-4">
+                            <textarea class="w-full h-32 resize-none border-none outline-none" placeholder="Tuliskan jawaban Anda di sini..."></textarea>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Essay Question 3 -->
+            <div class="mb-8 p-4 border-l-4 border-green-200 bg-green-50">
+                <div class="flex items-start">
+                    <span class="question-number text-white px-3 py-1 rounded-full text-sm font-bold mr-4">3</span>
+                    <div class="flex-1">
+                        <p class="font-medium text-gray-800 mb-4">Bandingkan perbedaan antara sel prokariotik dan eukariotik! Berikan contoh organisme untuk masing-masing jenis sel!</p>
+                        <div class="answer-box rounded-lg p-4">
+                            <textarea class="w-full h-40 resize-none border-none outline-none" placeholder="Tuliskan jawaban Anda di sini..."></textarea>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Essay Question 4 -->
+            <div class="mb-8 p-4 border-l-4 border-green-200 bg-green-50">
+                <div class="flex items-start">
+                    <span class="question-number text-white px-3 py-1 rounded-full text-sm font-bold mr-4">4</span>
+                    <div class="flex-1">
+                        <p class="font-medium text-gray-800 mb-4">Jelaskan perbedaan cara memperoleh makanan antara organisme autotrof dan heterotrof! Berikan contoh masing-masing!</p>
+                        <div class="answer-box rounded-lg p-4">
+                            <textarea class="w-full h-32 resize-none border-none outline-none" placeholder="Tuliskan jawaban Anda di sini..."></textarea>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Essay Question 5 -->
+            <div class="mb-8 p-4 border-l-4 border-green-200 bg-green-50">
+                <div class="flex items-start">
+                    <span class="question-number text-white px-3 py-1 rounded-full text-sm font-bold mr-4">5</span>
+                    <div class="flex-1">
+                        <p class="font-medium text-gray-800 mb-4">Buatlah bagan sederhana yang menunjukkan hierarki taksonomi dari kingdom hingga spesies! Gunakan contoh organisme tertentu!</p>
+                        <div class="answer-box rounded-lg p-4">
+                            <textarea class="w-full h-40 resize-none border-none outline-none" placeholder="Tuliskan jawaban Anda di sini..."></textarea>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Action Buttons -->
+        <div class="bg-white rounded-b-xl shadow-lg p-6 mt-6 no-print">
+            <div class="flex flex-wrap gap-4 justify-center">
+                <button onclick="window.print()" class="bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-lg font-medium transition-colors flex items-center">
+                    🖨️ Cetak Lembar Kerja
+                </button>
+                <button onclick="saveAnswers()" class="bg-green-600 hover:bg-green-700 text-white px-6 py-3 rounded-lg font-medium transition-colors flex items-center">
+                    💾 Simpan Jawaban
+                </button>
+                <button onclick="resetForm()" class="bg-gray-600 hover:bg-gray-700 text-white px-6 py-3 rounded-lg font-medium transition-colors flex items-center">
+                    🔄 Reset Form
+                </button>
+                <button onclick="submitAnswers()" class="bg-purple-600 hover:bg-purple-700 text-white px-6 py-3 rounded-lg font-medium transition-colors flex items-center">
+                    📤 Kirim ke Sistem Koreksi
+                </button>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <div class="text-center mt-8 text-gray-500 text-sm">
+            <p>© 2024 Sistem Pembelajaran IPA Digital - SMP Negeri</p>
+            <p class="mt-1">Lembar kerja ini dapat digunakan untuk latihan dan evaluasi pembelajaran</p>
+        </div>
+    </div>
+
+    <script>
+        function saveAnswers() {
+            // Collect all answers
+            const answers = {
+                studentInfo: {
+                    name: document.querySelector('input[placeholder="Tulis nama lengkap Anda"]').value,
+                    class: document.querySelector('select').value,
+                    number: document.querySelector('input[type="number"]').value
+                },
+                multipleChoice: {},
+                essays: {}
+            };
+
+            // Collect multiple choice answers
+            for (let i = 1; i <= 5; i++) {
+                const selected = document.querySelector(`input[name="q${i}"]:checked`);
+                answers.multipleChoice[`q${i}`] = selected ? selected.value : '';
+            }
+
+            // Collect essay answers
+            const textareas = document.querySelectorAll('textarea');
+            textareas.forEach((textarea, index) => {
+                answers.essays[`essay${index + 1}`] = textarea.value;
+            });
+
+            // Save to localStorage
+            localStorage.setItem('ipaWorksheetAnswers', JSON.stringify(answers));
+            
+            alert('✅ Jawaban berhasil disimpan!\n\nAnda dapat melanjutkan mengerjakan nanti atau langsung mengirim ke sistem koreksi.');
+        }
+
+        function resetForm() {
+            if (confirm('⚠️ Apakah Anda yakin ingin menghapus semua jawaban?\n\nTindakan ini tidak dapat dibatalkan.')) {
+                // Reset all inputs
+                document.querySelectorAll('input[type="text"], input[type="number"], select').forEach(input => {
+                    input.value = '';
+                });
+                
+                // Reset radio buttons
+                document.querySelectorAll('input[type="radio"]').forEach(radio => {
+                    radio.checked = false;
+                });
+                
+                // Reset textareas
+                document.querySelectorAll('textarea').forEach(textarea => {
+                    textarea.value = '';
+                });
+                
+                // Clear localStorage
+                localStorage.removeItem('ipaWorksheetAnswers');
+                
+                alert('🔄 Form berhasil direset!\n\nSemua jawaban telah dihapus.');
+            }
+        }
+
+        function submitAnswers() {
+            // Check if student info is filled
+            const name = document.querySelector('input[placeholder="Tulis nama lengkap Anda"]').value;
+            const studentClass = document.querySelector('select').value;
+            
+            if (!name || !studentClass) {
+                alert('⚠️ Mohon lengkapi data diri Anda terlebih dahulu!\n\n• Nama lengkap\n• Kelas');
+                return;
+            }
+
+            // Check if at least some questions are answered
+            const answeredMC = document.querySelectorAll('input[type="radio"]:checked').length;
+            const answeredEssay = Array.from(document.querySelectorAll('textarea')).filter(t => t.value.trim()).length;
+            
+            if (answeredMC === 0 && answeredEssay === 0) {
+                alert('⚠️ Mohon jawab minimal beberapa soal sebelum mengirim!');
+                return;
+            }
+
+            if (confirm('📤 Kirim jawaban ke sistem koreksi?\n\nPastikan semua jawaban sudah benar karena tidak dapat diubah setelah dikirim.')) {
+                // Save answers first
+                saveAnswers();
+                
+                // Simulate submission
+                const submitBtn = event.target;
+                submitBtn.innerHTML = '⏳ Mengirim...';
+                submitBtn.disabled = true;
+                
+                setTimeout(() => {
+                    alert('✅ Jawaban berhasil dikirim ke sistem koreksi!\n\n📊 Hasil koreksi akan tersedia dalam beberapa menit.\n\n💡 Anda dapat melihat hasilnya di halaman sistem koreksi.');
+                    
+                    // Reset button
+                    submitBtn.innerHTML = '📤 Kirim ke Sistem Koreksi';
+                    submitBtn.disabled = false;
+                    
+                    // Optional: redirect to correction system
+                    if (confirm('🔄 Buka sistem koreksi sekarang untuk melihat hasil?')) {
+                        // In a real implementation, this would redirect to the correction system
+                        window.open('#', '_blank');
+                    }
+                }, 2000);
+            }
+        }
+
+        // Load saved answers on page load
+        window.addEventListener('load', function() {
+            const saved = localStorage.getItem('ipaWorksheetAnswers');
+            if (saved) {
+                try {
+                    const answers = JSON.parse(saved);
+                    
+                    // Restore student info
+                    if (answers.studentInfo) {
+                        if (answers.studentInfo.name) {
+                            document.querySelector('input[placeholder="Tulis nama lengkap Anda"]').value = answers.studentInfo.name;
+                        }
+                        if (answers.studentInfo.class) {
+                            document.querySelector('select').value = answers.studentInfo.class;
+                        }
+                        if (answers.studentInfo.number) {
+                            document.querySelector('input[type="number"]').value = answers.studentInfo.number;
+                        }
+                    }
+                    
+                    // Restore multiple choice answers
+                    if (answers.multipleChoice) {
+                        Object.keys(answers.multipleChoice).forEach(key => {
+                            const value = answers.multipleChoice[key];
+                            if (value) {
+                                const radio = document.querySelector(`input[name="${key}"][value="${value}"]`);
+                                if (radio) radio.checked = true;
+                            }
+                        });
+                    }
+                    
+                    // Restore essay answers
+                    if (answers.essays) {
+                        const textareas = document.querySelectorAll('textarea');
+                        Object.keys(answers.essays).forEach((key, index) => {
+                            if (textareas[index]) {
+                                textareas[index].value = answers.essays[key];
+                            }
+                        });
+                    }
+                    
+                    // Show notification
+                    const notification = document.createElement('div');
+                    notification.className = 'fixed top-4 right-4 bg-blue-600 text-white px-6 py-3 rounded-lg shadow-lg z-50';
+                    notification.innerHTML = '💾 Jawaban tersimpan dimuat kembali';
+                    document.body.appendChild(notification);
+                    
+                    setTimeout(() => {
+                        notification.remove();
+                    }, 3000);
+                    
+                } catch (e) {
+                    console.error('Error loading saved answers:', e);
+                }
+            }
+        });
+
+        // Auto-save functionality
+        let autoSaveTimeout;
+        function autoSave() {
+            clearTimeout(autoSaveTimeout);
+            autoSaveTimeout = setTimeout(() => {
+                const name = document.querySelector('input[placeholder="Tulis nama lengkap Anda"]').value;
+                if (name) { // Only auto-save if name is filled
+                    saveAnswers();
+                }
+            }, 5000); // Auto-save after 5 seconds of inactivity
+        }
+
+        // Add auto-save listeners
+        document.addEventListener('input', autoSave);
+        document.addEventListener('change', autoSave);
+    </script>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'980de48023b3fd03',t:'MTc1ODE2NzU2Ny4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>
