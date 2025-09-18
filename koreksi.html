@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sistem Koreksi IPA Kelas 7 - SMP Digital</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+        body { font-family: 'Inter', sans-serif; }
+        .gradient-bg { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); }
+        .card-shadow { box-shadow: 0 10px 25px rgba(0,0,0,0.1); }
+        .upload-area { transition: all 0.3s ease; }
+        .upload-area:hover { transform: translateY(-2px); }
+        .result-animation { animation: slideIn 0.5s ease-out; }
+        @keyframes slideIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body class="bg-gray-50 min-h-screen">
+    <!-- Header -->
+    <header class="gradient-bg text-white py-6 shadow-lg">
+        <div class="container mx-auto px-6">
+            <div class="flex items-center justify-between">
+                <div class="flex items-center space-x-3">
+                    <div class="bg-white bg-opacity-20 p-2 rounded-lg">
+                        <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 20 20">
+                            <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                        </svg>
+                    </div>
+                    <div>
+                        <h1 class="text-2xl font-bold">Sistem Koreksi IPA</h1>
+                        <p class="text-blue-100">Kelas 7 SMP - Auto Correction</p>
+                    </div>
+                </div>
+                <div class="text-right">
+                    <p class="text-sm text-blue-100">Mata Pelajaran</p>
+                    <p class="font-semibold">Ilmu Pengetahuan Alam</p>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <div class="container mx-auto px-6 py-8">
+        <!-- Upload Section -->
+        <div class="max-w-4xl mx-auto">
+            <div class="bg-white rounded-xl card-shadow p-8 mb-8">
+                <div class="text-center mb-8">
+                    <h2 class="text-3xl font-bold text-gray-800 mb-2">Upload Lembar Kerja</h2>
+                    <p class="text-gray-600">Unggah foto atau scan lembar jawaban IPA Anda untuk dikoreksi otomatis</p>
+                </div>
+
+                <div id="uploadArea" class="upload-area border-3 border-dashed border-blue-300 rounded-xl p-12 text-center bg-blue-50 cursor-pointer">
+                    <div class="mb-4">
+                        <svg class="w-16 h-16 text-blue-400 mx-auto" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12"/>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-semibold text-gray-700 mb-2">Klik untuk upload atau drag & drop</h3>
+                    <p class="text-gray-500 mb-4">Format: JPG, PNG, PDF (Max 5MB)</p>
+                    <input type="file" id="fileInput" class="hidden" accept="image/*,.pdf">
+                    <button onclick="document.getElementById('fileInput').click()" class="bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-lg font-medium transition-colors">
+                        Pilih File
+                    </button>
+                </div>
+
+                <!-- Student Info -->
+                <div class="grid md:grid-cols-2 gap-6 mt-8">
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-2">Nama Siswa</label>
+                        <input type="text" id="studentName" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent" placeholder="Masukkan nama lengkap">
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-2">Kelas</label>
+                        <select id="studentClass" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+                            <option value="">Pilih Kelas</option>
+                            <option value="7A">7A</option>
+                            <option value="7B">7B</option>
+                            <option value="7C">7C</option>
+                            <option value="7D">7D</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="mt-6">
+                    <label class="block text-sm font-medium text-gray-700 mb-2">Topik Materi</label>
+                    <select id="topic" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+                        <option value="">Pilih Topik</option>
+                        <option value="klasifikasi-makhluk-hidup">Klasifikasi Makhluk Hidup</option>
+                        <option value="sistem-organisasi-kehidupan">Sistem Organisasi Kehidupan</option>
+                        <option value="interaksi-makhluk-hidup">Interaksi Makhluk Hidup dengan Lingkungan</option>
+                        <option value="pencemaran-lingkungan">Pencemaran Lingkungan</option>
+                        <option value="pemanasan-global">Pemanasan Global</option>
+                    </select>
+                </div>
+
+                <button id="processBtn" onclick="processAnswer()" class="w-full mt-8 bg-gradient-to-r from-green-500 to-blue-600 hover:from-green-600 hover:to-blue-700 text-white py-4 px-6 rounded-lg font-semibold text-lg transition-all transform hover:scale-105 disabled:opacity-50 disabled:cursor-not-allowed" disabled>
+                    🔍 Mulai Koreksi Otomatis
+                </button>
+            </div>
+
+            <!-- Results Section -->
+            <div id="resultsSection" class="hidden">
+                <div class="bg-white rounded-xl card-shadow p-8 result-animation">
+                    <div class="flex items-center justify-between mb-6">
+                        <h3 class="text-2xl font-bold text-gray-800">Hasil Koreksi</h3>
+                        <div id="scoreDisplay" class="text-right">
+                            <div class="text-3xl font-bold text-green-600">85</div>
+                            <div class="text-sm text-gray-500">dari 100</div>
+                        </div>
+                    </div>
+
+                    <!-- Student Info Display -->
+                    <div class="bg-gray-50 rounded-lg p-4 mb-6">
+                        <div class="grid md:grid-cols-3 gap-4 text-sm">
+                            <div>
+                                <span class="font-medium text-gray-600">Nama:</span>
+                                <span id="displayName" class="ml-2 text-gray-800">-</span>
+                            </div>
+                            <div>
+                                <span class="font-medium text-gray-600">Kelas:</span>
+                                <span id="displayClass" class="ml-2 text-gray-800">-</span>
+                            </div>
+                            <div>
+                                <span class="font-medium text-gray-600">Topik:</span>
+                                <span id="displayTopic" class="ml-2 text-gray-800">-</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Score Breakdown -->
+                    <div class="grid md:grid-cols-3 gap-6 mb-8">
+                        <div class="text-center p-4 bg-green-50 rounded-lg">
+                            <div class="text-2xl font-bold text-green-600" id="correctCount">17</div>
+                            <div class="text-sm text-green-700">Jawaban Benar</div>
+                        </div>
+                        <div class="text-center p-4 bg-red-50 rounded-lg">
+                            <div class="text-2xl font-bold text-red-600" id="wrongCount">3</div>
+                            <div class="text-sm text-red-700">Jawaban Salah</div>
+                        </div>
+                        <div class="text-center p-4 bg-blue-50 rounded-lg">
+                            <div class="text-2xl font-bold text-blue-600" id="totalQuestions">20</div>
+                            <div class="text-sm text-blue-700">Total Soal</div>
+                        </div>
+                    </div>
+
+                    <!-- Detailed Results -->
+                    <div class="space-y-4" id="detailedResults">
+                        <!-- Results will be populated here -->
+                    </div>
+
+                    <!-- Action Buttons -->
+                    <div class="flex flex-wrap gap-4 mt-8 pt-6 border-t">
+                        <button onclick="downloadReport()" class="flex-1 bg-blue-600 hover:bg-blue-700 text-white py-3 px-6 rounded-lg font-medium transition-colors">
+                            📄 Download Laporan
+                        </button>
+                        <button onclick="resetForm()" class="flex-1 bg-gray-600 hover:bg-gray-700 text-white py-3 px-6 rounded-lg font-medium transition-colors">
+                            🔄 Koreksi Baru
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Sample questions and answers for IPA Grade 7
+        const questionBank = {
+            'klasifikasi-makhluk-hidup': [
+                { question: "Apa dasar klasifikasi makhluk hidup menurut sistem 5 kingdom?", answer: "Struktur sel, cara memperoleh makanan, dan kompleksitas organisasi tubuh", type: "essay" },
+                { question: "Sebutkan 5 kingdom dalam klasifikasi makhluk hidup!", answer: "Monera, Protista, Fungi, Plantae, Animalia", type: "essay" },
+                { question: "Kingdom Plantae memiliki ciri-ciri...", options: ["Autotrof, eukariotik, multiseluler", "Heterotrof, prokariotik, uniseluler", "Autotrof, prokariotik, multiseluler"], correct: 0, type: "multiple" }
+            ],
+            'sistem-organisasi-kehidupan': [
+                { question: "Urutan tingkat organisasi kehidupan dari yang terkecil adalah...", answer: "Sel → Jaringan → Organ → Sistem Organ → Organisme", type: "essay" },
+                { question: "Fungsi utama jaringan epidermis pada tumbuhan adalah...", answer: "Melindungi bagian dalam tumbuhan dari kerusakan dan kehilangan air", type: "essay" },
+                { question: "Sistem pencernaan pada manusia terdiri dari...", options: ["Mulut, kerongkongan, lambung, usus", "Jantung, pembuluh darah, paru-paru", "Ginjal, ureter, kandung kemih"], correct: 0, type: "multiple" }
+            ]
+        };
+
+        let uploadedFile = null;
+        let currentAnswers = [];
+
+        // File upload handling
+        document.getElementById('fileInput').addEventListener('change', function(e) {
+            const file = e.target.files[0];
+            if (file) {
+                uploadedFile = file;
+                updateUploadArea(file.name);
+                checkFormCompletion();
+            }
+        });
+
+        // Form validation
+        function checkFormCompletion() {
+            const name = document.getElementById('studentName').value;
+            const studentClass = document.getElementById('studentClass').value;
+            const topic = document.getElementById('topic').value;
+            const processBtn = document.getElementById('processBtn');
+            
+            if (name && studentClass && topic && uploadedFile) {
+                processBtn.disabled = false;
+                processBtn.classList.remove('opacity-50', 'cursor-not-allowed');
+            } else {
+                processBtn.disabled = true;
+                processBtn.classList.add('opacity-50', 'cursor-not-allowed');
+            }
+        }
+
+        // Add event listeners for form inputs
+        ['studentName', 'studentClass', 'topic'].forEach(id => {
+            document.getElementById(id).addEventListener('input', checkFormCompletion);
+            document.getElementById(id).addEventListener('change', checkFormCompletion);
+        });
+
+        function updateUploadArea(fileName) {
+            const uploadArea = document.getElementById('uploadArea');
+            uploadArea.innerHTML = `
+                <div class="flex items-center justify-center space-x-4">
+                    <svg class="w-12 h-12 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                    </svg>
+                    <div>
+                        <p class="text-lg font-semibold text-gray-700">File berhasil diupload!</p>
+                        <p class="text-gray-500">${fileName}</p>
+                    </div>
+                </div>
+                <button onclick="document.getElementById('fileInput').click()" class="mt-4 bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg text-sm transition-colors">
+                    Ganti File
+                </button>
+            `;
+            uploadArea.classList.remove('border-blue-300', 'bg-blue-50');
+            uploadArea.classList.add('border-green-300', 'bg-green-50');
+        }
+
+        function processAnswer() {
+            const name = document.getElementById('studentName').value;
+            const studentClass = document.getElementById('studentClass').value;
+            const topic = document.getElementById('topic').value;
+            
+            // Show loading state
+            const processBtn = document.getElementById('processBtn');
+            processBtn.innerHTML = '⏳ Sedang memproses...';
+            processBtn.disabled = true;
+            
+            // Simulate processing time
+            setTimeout(() => {
+                // Generate sample results based on selected topic
+                generateResults(name, studentClass, topic);
+                
+                // Show results
+                document.getElementById('resultsSection').classList.remove('hidden');
+                document.getElementById('resultsSection').scrollIntoView({ behavior: 'smooth' });
+                
+                // Reset button
+                processBtn.innerHTML = '🔍 Mulai Koreksi Otomatis';
+                processBtn.disabled = false;
+            }, 2000);
+        }
+
+        function generateResults(name, studentClass, topic) {
+            // Update display info
+            document.getElementById('displayName').textContent = name;
+            document.getElementById('displayClass').textContent = studentClass;
+            
+            const topicNames = {
+                'klasifikasi-makhluk-hidup': 'Klasifikasi Makhluk Hidup',
+                'sistem-organisasi-kehidupan': 'Sistem Organisasi Kehidupan',
+                'interaksi-makhluk-hidup': 'Interaksi Makhluk Hidup',
+                'pencemaran-lingkungan': 'Pencemaran Lingkungan',
+                'pemanasan-global': 'Pemanasan Global'
+            };
+            document.getElementById('displayTopic').textContent = topicNames[topic] || topic;
+            
+            // Generate random but realistic results
+            const totalQuestions = 20;
+            const correctAnswers = Math.floor(Math.random() * 5) + 15; // 15-19 correct answers
+            const wrongAnswers = totalQuestions - correctAnswers;
+            const score = Math.round((correctAnswers / totalQuestions) * 100);
+            
+            // Update score display
+            document.getElementById('scoreDisplay').innerHTML = `
+                <div class="text-3xl font-bold ${score >= 80 ? 'text-green-600' : score >= 60 ? 'text-yellow-600' : 'text-red-600'}">${score}</div>
+                <div class="text-sm text-gray-500">dari 100</div>
+            `;
+            
+            document.getElementById('correctCount').textContent = correctAnswers;
+            document.getElementById('wrongCount').textContent = wrongAnswers;
+            document.getElementById('totalQuestions').textContent = totalQuestions;
+            
+            // Generate detailed results
+            generateDetailedResults(correctAnswers, wrongAnswers, topic);
+        }
+
+        function generateDetailedResults(correct, wrong, topic) {
+            const detailedResults = document.getElementById('detailedResults');
+            const questions = questionBank[topic] || [];
+            
+            let resultsHTML = '<h4 class="text-lg font-semibold text-gray-800 mb-4">Analisis Jawaban:</h4>';
+            
+            // Show some sample questions with results
+            for (let i = 0; i < Math.min(5, questions.length); i++) {
+                const isCorrect = Math.random() > 0.2; // 80% chance correct
+                const question = questions[i];
+                
+                resultsHTML += `
+                    <div class="border rounded-lg p-4 ${isCorrect ? 'border-green-200 bg-green-50' : 'border-red-200 bg-red-50'}">
+                        <div class="flex items-start justify-between">
+                            <div class="flex-1">
+                                <p class="font-medium text-gray-800 mb-2">Soal ${i + 1}: ${question.question}</p>
+                                ${question.type === 'essay' ? 
+                                    `<p class="text-sm text-gray-600 mb-2"><strong>Jawaban yang benar:</strong> ${question.answer}</p>` :
+                                    `<p class="text-sm text-gray-600 mb-2"><strong>Jawaban yang benar:</strong> ${question.options[question.correct]}</p>`
+                                }
+                                <p class="text-sm ${isCorrect ? 'text-green-700' : 'text-red-700'}">
+                                    <strong>Status:</strong> ${isCorrect ? 'Benar ✓' : 'Salah ✗'}
+                                </p>
+                            </div>
+                            <div class="ml-4">
+                                <span class="inline-flex items-center px-2 py-1 rounded-full text-xs font-medium ${isCorrect ? 'bg-green-100 text-green-800' : 'bg-red-100 text-red-800'}">
+                                    ${isCorrect ? '✓ Benar' : '✗ Salah'}
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                `;
+            }
+            
+            // Add recommendations
+            resultsHTML += `
+                <div class="mt-6 p-4 bg-blue-50 border border-blue-200 rounded-lg">
+                    <h5 class="font-semibold text-blue-800 mb-2">💡 Rekomendasi Belajar:</h5>
+                    <ul class="text-sm text-blue-700 space-y-1">
+                        <li>• Pelajari kembali materi yang masih salah</li>
+                        <li>• Latihan soal serupa untuk memperkuat pemahaman</li>
+                        <li>• Diskusi dengan guru atau teman untuk klarifikasi konsep</li>
+                        <li>• Baca buku referensi tambahan tentang topik ini</li>
+                    </ul>
+                </div>
+            `;
+            
+            detailedResults.innerHTML = resultsHTML;
+        }
+
+        function downloadReport() {
+            // Simulate download
+            const name = document.getElementById('displayName').textContent;
+            const score = document.querySelector('#scoreDisplay .text-3xl').textContent;
+            
+            alert(`📄 Laporan hasil koreksi untuk ${name} (Nilai: ${score}) sedang diunduh...\n\nCatatan: Ini adalah simulasi download. Dalam implementasi nyata, file PDF akan diunduh otomatis.`);
+        }
+
+        function resetForm() {
+            // Reset form
+            document.getElementById('studentName').value = '';
+            document.getElementById('studentClass').value = '';
+            document.getElementById('topic').value = '';
+            document.getElementById('fileInput').value = '';
+            
+            // Reset upload area
+            const uploadArea = document.getElementById('uploadArea');
+            uploadArea.innerHTML = `
+                <div class="mb-4">
+                    <svg class="w-16 h-16 text-blue-400 mx-auto" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12"/>
+                    </svg>
+                </div>
+                <h3 class="text-xl font-semibold text-gray-700 mb-2">Klik untuk upload atau drag & drop</h3>
+                <p class="text-gray-500 mb-4">Format: JPG, PNG, PDF (Max 5MB)</p>
+                <button onclick="document.getElementById('fileInput').click()" class="bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-lg font-medium transition-colors">
+                    Pilih File
+                </button>
+            `;
+            uploadArea.classList.remove('border-green-300', 'bg-green-50');
+            uploadArea.classList.add('border-blue-300', 'bg-blue-50');
+            
+            // Hide results
+            document.getElementById('resultsSection').classList.add('hidden');
+            
+            // Reset uploaded file
+            uploadedFile = null;
+            checkFormCompletion();
+            
+            // Scroll to top
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        // Drag and drop functionality
+        const uploadArea = document.getElementById('uploadArea');
+        
+        ['dragenter', 'dragover', 'dragleave', 'drop'].forEach(eventName => {
+            uploadArea.addEventListener(eventName, preventDefaults, false);
+        });
+        
+        function preventDefaults(e) {
+            e.preventDefault();
+            e.stopPropagation();
+        }
+        
+        ['dragenter', 'dragover'].forEach(eventName => {
+            uploadArea.addEventListener(eventName, highlight, false);
+        });
+        
+        ['dragleave', 'drop'].forEach(eventName => {
+            uploadArea.addEventListener(eventName, unhighlight, false);
+        });
+        
+        function highlight(e) {
+            uploadArea.classList.add('border-blue-500', 'bg-blue-100');
+        }
+        
+        function unhighlight(e) {
+            uploadArea.classList.remove('border-blue-500', 'bg-blue-100');
+        }
+        
+        uploadArea.addEventListener('drop', handleDrop, false);
+        
+        function handleDrop(e) {
+            const dt = e.dataTransfer;
+            const files = dt.files;
+            
+            if (files.length > 0) {
+                const file = files[0];
+                uploadedFile = file;
+                updateUploadArea(file.name);
+                checkFormCompletion();
+            }
+        }
+    </script>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'980dddc74696c6f6',t:'MTc1ODE2NzI5Mi4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>
